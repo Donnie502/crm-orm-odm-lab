@@ -120,3 +120,7 @@ Los errores se devuelven como JSON: `{ "error": "Contact not found" }`.
 **11. Repetibilidad.** El archivo `tests/setup.js` conecta las dos bases de datos antes de cada suite y llama a `reset()` de los seeders, que deja otra vez los datos iniciales (3 usuarios, 4 compañías, 8 contactos y 10 actividades). Al terminar cierra las conexiones. Gracias a eso cada suite empieza siempre con los mismos datos, y los resultados esperados, como los 8 contactos, no dependen de lo que hicieron las pruebas anteriores.
 
 **12. Experiencia personal.** El reto que más se me complicó fue el 08, porque el código original parecía estar bien: la petición regresaba 200, pero el documento de la respuesta era el anterior a la actualización. Para encontrar el problema revisé cómo funciona `findByIdAndUpdate` y leí lo que pedía `challenge08.test.js`, y vi que por defecto regresa el documento viejo. Lo arreglé con `new: true` y `runValidators: true`, corrí `npx jest tests/challenge08.test.js` hasta que pasó y al final corrí `npm test` para confirmar que no se hubiera roto otro reto.
+
+## Evidencia
+
+![Resultado de npm test con 9 suites aprobadas](docs/evidencia-npm-test.png)
